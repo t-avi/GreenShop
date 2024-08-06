@@ -15,11 +15,19 @@ namespace GreenShop.Controllers
             _logger = logger;
         }
 
-        public string Index()
+        public string Index(int? id)
         {
-            var products = productList.GetProductList();
+            int _id = id ?? -1;
 
-            return string.Join("\n\n", products);
+            if (_id < 0) {
+                var products = productList.GetProductList();
+                return string.Join("\n\n", products);
+            }
+            else {
+                var products = productList.GetProductList();
+                return products[_id].ToString();
+            }
+            
         }
 
         public IActionResult Privacy()
