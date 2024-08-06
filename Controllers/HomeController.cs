@@ -8,14 +8,18 @@ namespace GreenShop.Controllers
     {
         private readonly ILogger<HomeController> _logger;
 
+        ProductList productList = new ProductList();
+
         public HomeController(ILogger<HomeController> logger)
         {
             _logger = logger;
         }
 
-        public IActionResult Index()
+        public string Index()
         {
-            return View();
+            var products = productList.GetProductList();
+
+            return string.Join("\n\n", products);
         }
 
         public IActionResult Privacy()
