@@ -15,9 +15,12 @@ namespace GreenShop.Controllers
             _logger = logger;
         }
 
-        public string Index(int? id)
+        public IActionResult Index(int id) //use try catch
         {
-            int _id = id ?? -1;
+
+            var products = productList.GetProductList();
+
+            /*int _id = id ?? -1;
 
             if (_id < 0) {
                 var products = productList.GetProductList();
@@ -26,7 +29,9 @@ namespace GreenShop.Controllers
             else {
                 var products = productList.GetProductList();
                 return products[_id].ToString();
-            }
+            }*/
+
+            return View(products);
             
         }
 
