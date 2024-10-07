@@ -6,44 +6,29 @@ namespace GreenShop.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
+        private readonly ProductList productList;
+        private readonly CartList cartList;
 
-        ProductList productList = new ProductList();
-
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController()
         {
-            _logger = logger;
+            productList = new ProductList();
+            cartList = new CartList();
         }
 
         public IActionResult Index(int id) //use try catch
         {
+            var products = productList.GetAll();
 
-            var products = productList.GetProductList();
-
-            /*int _id = id ?? -1;
-
-            if (_id < 0) {
-                var products = productList.GetProductList();
-                return string.Join("\n\n", products);
-            }
-            else {
-                var products = productList.GetProductList();
-                return products[_id].ToString();
-            }*/
-
-            return View(products);
-            
+            return View(products);            
         }
 
-        public IActionResult Privacy()
-        {
-            return View();
-        }
+
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
+       
     }
 }

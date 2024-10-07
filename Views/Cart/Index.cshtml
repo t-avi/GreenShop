@@ -1,0 +1,35 @@
+﻿@model Cart
+
+<div class="row">
+ 
+    @if (Model != null) 
+    { 
+        <div class="col-4 card shadow">
+            <div class="card-body">
+                @foreach (var position in Model.GetAll())
+                {
+                    <a style="color:#393D4A" href="/product/index/@position.Product.ID"><h5>@position.Product.Name</h5></a>
+                    <h5 style="color:#393D4A">Count: @position.Count</h5>
+                    <h5 style="color:#393D4A">Price: @position.PositionPrice</h5>
+                }
+            </div>
+        </div>
+    
+    <div class="col-4 card shadow">
+        <div class="card-body">
+                <h5 style="color:#393D4A">Sum: </h5>
+        </div>
+    </div>
+
+    }
+    else {
+    <div class="col-4 card shadow">
+        <div class="card-body">
+            <h5 style="color:#393D4A">Cart is empty!</h5>
+        </div>
+    </div>
+    }
+
+</div>
+
+<div class="text-center"></div>

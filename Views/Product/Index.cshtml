@@ -1,0 +1,24 @@
+﻿@model Product
+
+<div class="row">
+        <div class="col-4 card shadow">
+            <div class="card-body">
+
+            <img class="card-img-top" src="~/images/2.PNG" />
+            <a style="color:#393D4A"><h5>@Model.Name</h5></a>
+            <h5 style="color:#393D4A">@Model.Cost $</h5>
+            <a class="btn btn-dark" href="#" role="button">Add to cart</a>
+            <a class="btn btn-dark" href="/home/index" role="button">Continue shopping</a>             
+            </div>
+        </div>
+    <div class="col-8 card shadow">
+        <div class="card-body">
+
+            <a style="color:#393D4A"><h5>@Model.Name</h5></a>
+            <h5 style="color:#393D4A">@Model.Description</h5>
+        </div>
+    </div>
+    
+</div>
+
+<div class="text-center"></div>
