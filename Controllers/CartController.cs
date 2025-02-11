@@ -5,22 +5,30 @@ namespace GreenShop.Controllers
 {
     public class CartController : Controller
     {
-        private readonly ProductList productList = new ProductList();
-        private readonly Cart cart = CartList.TryGetByUserID("userId");
-        public CartController() 
-        {
-         
-        }
+        private readonly ProductRepository productList = new ProductRepository();
+        private readonly Cart cart = CartRepository.TryGetByUserID(Constants.UserId);
+     
 
         public IActionResult Index() //personal cart ID should be added
-        {            
+        {
             return View(cart);
         }
 
-        public void Add(int productId) 
+        public IActionResult Add(int productId) 
         {
-            var prod = productList.TryGetByID(productId);
             cart.AddProduct(new CartPosition(productList.TryGetByID(productId)));
+
+            return RedirectToAction("Index", "Home");
+        }
+
+        public IActionResult Remove(int productId)
+        {
+            cart.TryRemoveProduct(new CartPosition(productList.TryGetByID(productId)));
+
+            return RedirectToAction("Index", "Cart");
+        }
+        public CartController()
+        {
 
         }
     }

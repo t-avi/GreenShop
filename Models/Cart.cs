@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace GreenShop.Models
@@ -7,31 +8,50 @@ namespace GreenShop.Models
 
         public Guid Id;
 
-        public string UserId;
+        public int UserId;
 
-        private static List<CartPosition> Positions { get; set; } //make it get-set
+        private static List<CartPosition> positions;
+        public static List<CartPosition> Positions { get => positions; private set => positions = value; }
 
-
-        public decimal Cost
+        public decimal FullCartPrice
         {
-
-            get { return Positions.Sum(p => p.PositionPrice); }
-
+            get
+            {
+                return Positions.Sum(p => p.PositionPrice);
+            }
         }
-        public void AddProduct(CartPosition p) {
-            Positions.Add(p);
-        }
-
-        public void RemoveProduct(CartPosition p) { }
-
-        public List<CartPosition> GetAll() { return Positions; }
-
-        public Cart(string userId)
+        public Cart(int userId)
         {
             Id = Guid.NewGuid();
             UserId = userId;
             Positions = new List<CartPosition>();
         }
+
+        public void AddProduct(CartPosition p) {
+
+            int i = Positions.FindIndex(c => c.Product.Name == p.Product.Name);
+
+            if (i is not -1) { Positions[i].Count++; }
+
+            else { Positions.Add(p); }
+       
+        }
+
+        public void TryRemoveProduct(CartPosition p) {
+
+            //удалять или уменьшать количество(!)
+
+            int i = Positions.FindIndex(c => c.Product.Name == p.Product.Name);
+
+            if (i is not -1) { Positions.RemoveAt(i); }
+        }
+
+        public List<CartPosition> TryGetAll() { 
+            
+            return Positions; 
+        }
+
+      
     }
     
 }

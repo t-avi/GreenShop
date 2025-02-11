@@ -1,20 +1,19 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using System.Linq;
+﻿using GreenShop.Models;
 
-namespace GreenShop.Models
+namespace GreenShop
 {
-    public class ProductList
+    public class ProductRepository
     {
         private static List<Product> products = new List<Product>() {
             new Product("Monstera", 20, "Some plant"),
             new Product("Senecio", 35, "Another plant"),
             new Product("Anthurium", 60, "It's plant too"),
             new Product("Alocasia", 50, "It's plant too")
-        }; 
+        };
 
         public void AddListFromJson() { }
         public void LoadNewListFromJson() { }
-        public void SaveListToJson() { }        
+        public void SaveListToJson() { }
 
         public void AddProduct(Product p) { products.Add(p); }
 
@@ -24,8 +23,10 @@ namespace GreenShop.Models
 
         public List<Product> GetAll() { return products; }
 
-        public ProductList () {
+        public ProductRepository()
+        {
+            
+        }
 
-        }   
     }
 }

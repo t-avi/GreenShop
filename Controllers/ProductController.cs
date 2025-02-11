@@ -6,17 +6,17 @@ namespace GreenShop.Controllers
     public class ProductController : Controller
     {
 
-        private readonly ProductList productList;
+        private readonly ProductRepository productRepository;
 
         public ProductController()
         {
-            productList = new ProductList(); 
+            productRepository = new ProductRepository(); 
         }
    
 
         public IActionResult Index(int id)
         {            
-            var product = productList.TryGetByID(id);
+            var product = productRepository.TryGetByID(id);
 
             return View(product); 
 

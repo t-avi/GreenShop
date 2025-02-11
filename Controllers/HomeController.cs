@@ -6,13 +6,13 @@ namespace GreenShop.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ProductList productList;
-        private readonly CartList cartList;
+        private readonly ProductRepository productList;
+        private readonly CartRepository cartList;
 
         public HomeController()
         {
-            productList = new ProductList();
-            cartList = new CartList();
+            productList = new ProductRepository();
+            cartList = new CartRepository();
         }
 
         public IActionResult Index(int id) //use try catch
