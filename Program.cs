@@ -1,10 +1,17 @@
 using GreenShop;
+using GreenShop.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
-builder.Services.AddTransient<IMyDependency, MyDependency>(); //зарегестрировали сервис
+
+builder.Services.AddSingleton<ProductRepository>();
+builder.Services.AddSingleton<CartRepository>();
+
+builder.Services.AddTransient<CartPosition>();
+builder.Services.AddTransient<Cart>(_ => new Cart(Constants.UserId)); 
+builder.Services.AddTransient<Product>(_ => new Product("name", 0, "desc", "1.PNG"));
 
 var app = builder.Build();
 
@@ -12,7 +19,6 @@ var app = builder.Build();
 if (!app.Environment.IsDevelopment())
 {
     app.UseExceptionHandler("/Home/Error");
-    // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
     app.UseHsts();
 }
 

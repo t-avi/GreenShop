@@ -10,16 +10,10 @@ namespace GreenShop.Models
 
         public int UserId;
 
-        private static List<CartPosition> positions;
-        public static List<CartPosition> Positions { get => positions; private set => positions = value; }
+        private List<CartPosition> positions;
+        public List<CartPosition> Positions { get => positions; private set => positions = value; }
+        public decimal FullCartPrice { get => Positions.Sum(p => p.PositionPrice); }
 
-        public decimal FullCartPrice
-        {
-            get
-            {
-                return Positions.Sum(p => p.PositionPrice);
-            }
-        }
         public Cart(int userId)
         {
             Id = Guid.NewGuid();
@@ -32,13 +26,11 @@ namespace GreenShop.Models
             int i = Positions.FindIndex(c => c.Product.Name == p.Product.Name);
 
             if (i is not -1) { Positions[i].Count++; }
-
             else { Positions.Add(p); }
        
         }
 
         public void TryRemoveProduct(CartPosition p) {
-
             //удалять или уменьшать количество(!)
 
             int i = Positions.FindIndex(c => c.Product.Name == p.Product.Name);
@@ -46,12 +38,8 @@ namespace GreenShop.Models
             if (i is not -1) { Positions.RemoveAt(i); }
         }
 
-        public List<CartPosition> TryGetAll() { 
-            
-            return Positions; 
-        }
+        public List<CartPosition> TryGetAll() => Positions;
 
-      
     }
     
 }

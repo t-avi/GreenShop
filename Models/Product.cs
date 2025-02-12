@@ -3,24 +3,24 @@
     public class Product
     {
         private static int IdCounter = 1024; //counter for id generation (static allows counting)
+
+        public string Src { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
         public decimal Cost { get; set; }
         public  int ID { get; }
 
-        public Product(string name, decimal cost, string description) {
+        public Product(string name, decimal cost, string description, string src)
+        {
             Name = name;
             Description = description;
             Cost = cost;
 
-            ID = IdCounter++;            
+            ID = IdCounter++;
+            Src = src;
         }
 
-        public override string ToString()
-        {
-            return $"Id: {ID}\nName: {Name}\nDescription: {Description}\nCost: {Cost}$";
-            //need to override ToString to better mapping
-        }
+        public override string ToString() => $"Id: {ID}\nName: {Name}\nDescription: {Description}\nCost: {Cost}$";    
         
     }
 }

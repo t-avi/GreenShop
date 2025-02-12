@@ -8,18 +8,15 @@ namespace GreenShop.Controllers
 
         private readonly ProductRepository productRepository;
 
-        public ProductController()
+        public ProductController(ProductRepository productRepository)
         {
-            productRepository = new ProductRepository(); 
+            this.productRepository = productRepository; 
         }
    
 
         public IActionResult Index(int id)
-        {            
-            var product = productRepository.TryGetByID(id);
-
-            return View(product); 
-
+        { 
+            return View(productRepository.TryGetByID(id)); 
         }
     }
 }

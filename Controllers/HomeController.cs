@@ -9,17 +9,15 @@ namespace GreenShop.Controllers
         private readonly ProductRepository productList;
         private readonly CartRepository cartList;
 
-        public HomeController()
+        public HomeController(ProductRepository productList, CartRepository cartList)
         {
-            productList = new ProductRepository();
-            cartList = new CartRepository();
+            this.productList = productList;
+            this.cartList = cartList;
         }
 
         public IActionResult Index(int id) //use try catch
         {
-            var products = productList.GetAll();
-
-            return View(products);            
+            return View(productList.GetAll());            
         }
 
 
