@@ -6,12 +6,13 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 
-builder.Services.AddSingleton<ProductRepository>();
-builder.Services.AddSingleton<CartRepository>();
+builder.Services.AddSingleton<IProductRepository, ProductRepository>();
+builder.Services.AddSingleton<ICartRepository, CartRepository>();
 
-builder.Services.AddTransient<CartPosition>();
-builder.Services.AddTransient<Cart>(_ => new Cart(Constants.UserId)); 
-builder.Services.AddTransient<Product>(_ => new Product("name", 0, "desc", "1.PNG"));
+
+builder.Services.AddTransient<IProduct, Product>(_ => new Product("name", 0, "desc", "1.PNG"));
+builder.Services.AddTransient<ICartPosition, CartPosition>();
+builder.Services.AddTransient<ICart, Cart>(_ => new Cart(Constants.UserId));
 
 var app = builder.Build();
 

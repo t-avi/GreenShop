@@ -2,9 +2,9 @@
 
 namespace GreenShop
 {
-    public class ProductRepository
+    public class ProductRepository : IProductRepository
     {
-        private static List<Product> products = new List<Product>() {
+        private static List<IProduct> products = new List<IProduct>() {
             new Product("Monstera", 20, "Some plant", "1.PNG"),
             new Product("Senecio", 35, "Another plant", "2.PNG"),
             new Product("Anthurium", 60, "It's plant too", "3.PNG"),
@@ -15,13 +15,13 @@ namespace GreenShop
         public void LoadNewListFromJson() { }
         public void SaveListToJson() { }
 
-        public void AddProduct(Product p) => products.Add(p); 
+        public void AddProduct(IProduct p) => products.Add(p); 
 
-        public Product TryGetByID(int id) => products.FirstOrDefault(product => product.ID == id)!; //apply try catch to incorrect id, ! means non-nullable (check for errors)
+        public IProduct TryGetByID(Guid id) => products.FirstOrDefault(product => product.ID == id)!; //apply try catch to incorrect id, ! means non-nullable (check for errors)
 
         public int GetCount() => products.Count; 
 
-        public List<Product> GetAll() => products;
+        public List<IProduct> GetAll() => products;
 
         public ProductRepository() { }       
 

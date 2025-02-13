@@ -6,10 +6,10 @@ namespace GreenShop.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ProductRepository productList;
-        private readonly CartRepository cartList;
+        private readonly IProductRepository productList;
+        private readonly ICartRepository cartList;
 
-        public HomeController(ProductRepository productList, CartRepository cartList)
+        public HomeController(IProductRepository productList, ICartRepository cartList)
         {
             this.productList = productList;
             this.cartList = cartList;
@@ -19,7 +19,6 @@ namespace GreenShop.Controllers
         {
             return View(productList.GetAll());            
         }
-
 
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

@@ -2,7 +2,7 @@
 
 namespace GreenShop
 {
-    public class CartRepository
+    public class CartRepository : ICartRepository
     {
         private static List<Cart> _carts = new List<Cart>()
         {
@@ -10,7 +10,10 @@ namespace GreenShop
         };
 
         public static Cart TryGetByUserID(int userId) => _carts.FirstOrDefault(c => c.UserId == userId)!;
-        
+
+        public void Add(Cart cart) => _carts.Add(cart);
+
+
         public CartRepository() { }
     }
 }
