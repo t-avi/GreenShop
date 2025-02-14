@@ -17,15 +17,18 @@ namespace GreenShop.Controllers
         public IActionResult Add(Guid productId) 
         {
             cart.AddProduct(new CartPosition(productList.TryGetByID(productId)));
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("Index"); //should redirect to home or cart, now only to cart
         }
 
         public IActionResult Remove(Guid productId)
         {
-            //del or -=?
-
             cart.TryRemoveProduct(new CartPosition(productList.TryGetByID(productId)));
-            return RedirectToAction("Index", "Cart");
+            return RedirectToAction("Index");
+        }
+        public IActionResult ReduceCount(Guid productId)
+        {
+            cart.ReduceProductCount(new CartPosition(productList.TryGetByID(productId)));
+            return RedirectToAction("Index");
         }
         public CartController(IProductRepository productList)
         {

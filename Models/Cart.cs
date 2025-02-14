@@ -28,15 +28,27 @@ namespace GreenShop.Models
 
             if (i is not -1) { Positions[i].Count++; }
             else { Positions.Add(p); }
-       
+            
+        }
+
+        public void ReduceProductCount(ICartPosition p)
+        {
+            int i = Positions.FindIndex(c => c.Product.Name == p.Product.Name);
+
+            if (i is not -1) 
+            {
+                if (Positions[i].Count >  1) { Positions[i].Count--; }
+                else { TryRemoveProduct(p); }
+            }
+            
         }
 
         public void TryRemoveProduct(ICartPosition p) {
-            //удалять или уменьшать количество(!)
 
             int i = Positions.FindIndex(c => c.Product.Name == p.Product.Name);
 
             if (i is not -1) { Positions.RemoveAt(i); }
+
         }
 
         public List<ICartPosition> TryGetAll() => Positions;

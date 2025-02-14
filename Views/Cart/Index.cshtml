@@ -11,15 +11,20 @@
                     <div class="col-8 card shadow">
                         <div class="card-body">
                             <div class="container">
-                                <div class="row row-cols-2">
-                                    <div class="col">
+                                <div class="row row-cols-12">
+                                    <div class="col-5">
                                         <a style="color:#393D4A" href="/product/index/@position.Product.ID"><h5>@position.Product.Name</h5></a>
                                         <img class="card-img-top" src="~/images/@position.Product.Src" sizes=10vw/>
                                     </div>
-                                    <div class="col">
-                                        <h5>  .  </h5>
-                                        <h5 style="color:#393D4A">Count: @position.Count</h5>
-                                        <h5 style="color:#393D4A">Price: @position.PositionPrice</h5>
+                                    <div class="col-5">
+                                        <h5> ⠀</h5>
+                                        <h5 style="color:#393D4A"> Count: @position.Count</h5>
+                                        <a class="btn btn-light" role="button" href="/cart/add?productId=@position.Product.ID">+</a>
+                                        <a class="btn btn-light" role="button" href="/cart/reducecount?productId=@position.Product.ID">-</a>
+                                        <h5 style="color:#393D4A">Price: @position.PositionPrice</h5>                                        
+                                    </div>
+                                    <div class="col-2">
+                                        <h5> ⠀</h5>
                                         <a class="btn btn-dark" role="button" href="/cart/remove?productId=@position.Product.ID">Remove from cart</a>
                                     </div>
                                 </div>
@@ -31,7 +36,7 @@
     
     <div class="col-4 card shadow">
         <div class="card-body">
-                <h5 style="color:#393D4A">Sum: Model.GetSum</h5>
+                <h5 style="color:#393D4A">Sum: @Model.FullCartPrice</h5>
         </div>
     </div>
 
