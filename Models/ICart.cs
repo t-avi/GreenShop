@@ -9,5 +9,6 @@ namespace GreenShop.Models
         void ReduceProductCount(ICartPosition p);
         List<ICartPosition> TryGetAll();
         void TryRemoveProduct(ICartPosition p);
+        void Clear();
     }
 }

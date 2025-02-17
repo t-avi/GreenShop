@@ -2,7 +2,7 @@
 
 namespace GreenShop
 {
-    public class ProductRepository : IProductRepository
+    public class InMemoryProductRepository : IProductRepository
     {
         private static List<IProduct> products = new List<IProduct>() {
             new Product("Monstera", 20, "Some plant", "1.PNG"),
@@ -23,7 +23,7 @@ namespace GreenShop
 
         public List<IProduct> GetAll() => products;
 
-        public ProductRepository() { }       
+        public InMemoryProductRepository() { }       
 
     }
 }

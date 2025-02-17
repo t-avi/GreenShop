@@ -2,7 +2,7 @@
 
 namespace GreenShop
 {
-    public class CartRepository : ICartRepository
+    public class InMemoryCartRepository : ICartRepository
     {
         private static List<Cart> _carts = new List<Cart>()
         {
@@ -14,6 +14,6 @@ namespace GreenShop
         public void Add(Cart cart) => _carts.Add(cart);
 
 
-        public CartRepository() { }
+        public InMemoryCartRepository() { }
     }
 }

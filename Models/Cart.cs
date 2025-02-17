@@ -50,6 +50,10 @@ namespace GreenShop.Models
             if (i is not -1) { Positions.RemoveAt(i); }
 
         }
+        public void Clear()
+        {
+            positions.Clear();
+        }
 
         public List<ICartPosition> TryGetAll() => Positions;
 

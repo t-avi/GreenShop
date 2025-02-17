@@ -1,0 +1,49 @@
+﻿@model ICart
+
+<div class="row">
+    <div class="col-8 card shadow">
+        <div class="card-body">
+            @foreach (var position in Model.TryGetAll())
+            {        
+                <div class="container">
+                    <div class="row row-cols-12">
+                        <div class="col-5">
+                            <a style="color:#393D4A" href="/product/index/@position.Product.ID"><h5>@position.Product.Name</h5></a>
+                            <img class="card-img-top" src="~/images/@position.Product.Src" sizes=10vw />
+                        </div>
+                        <div class="col-5">
+                            <h5> ⠀</h5>
+                            <h5 style="color:#393D4A"> Count: @position.Count</h5>
+                            <h5 style="color:#393D4A">Price: @position.PositionPrice</h5>
+                        </div>                        
+                    </div>
+                </div>
+         
+            }
+        </div>
+    </div>
+
+    <div class="col-4 card shadow">
+        <div class="card-body">
+
+            <form>
+                <div class="form-group">
+                    <label for="exampleInputEmail1">Email address</label>
+                    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+                    <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputPassword1">Password</label>
+                    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+                </div>
+                <div class="form-check">
+                    <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                    <label class="form-check-label" for="exampleCheck1">Check me out</label>
+                </div>                
+            </form>
+
+            <h5 style="color:#393D4A">Sum: @Model.FullCartPrice</h5>
+            <a class="btn btn-dark" role="button" href="/order/make/">Pay</a>
+        </div>
+    </div>
+</div>

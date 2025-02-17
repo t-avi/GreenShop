@@ -6,7 +6,7 @@ namespace GreenShop.Controllers
     public class CartController : Controller
     {
         private readonly IProductRepository productList;
-        private readonly ICart cart = CartRepository.TryGetByUserID(Constants.UserId);
+        private readonly ICart cart = InMemoryCartRepository.TryGetByUserID(Constants.UserId);
      
 
         public IActionResult Index() //personal cart ID should be added

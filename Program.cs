@@ -6,8 +6,8 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 
-builder.Services.AddSingleton<IProductRepository, ProductRepository>();
-builder.Services.AddSingleton<ICartRepository, CartRepository>();
+builder.Services.AddSingleton<IProductRepository, InMemoryProductRepository>();
+builder.Services.AddSingleton<ICartRepository, InMemoryCartRepository>();
 
 
 builder.Services.AddTransient<IProduct, Product>(_ => new Product("name", 0, "desc", "1.PNG"));
