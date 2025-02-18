@@ -8,11 +8,13 @@ namespace GreenShop.Controllers
     {
         private readonly IProductRepository productList;
         private readonly ICartRepository cartList;
+        private readonly IOrderRepository orders;
 
-        public HomeController(IProductRepository productList, ICartRepository cartList)
+        public HomeController(IProductRepository productList, ICartRepository cartList, IOrderRepository orders)
         {
             this.productList = productList;
             this.cartList = cartList;
+            this.orders = orders;
         }
 
         public IActionResult Index(int id) //use try catch

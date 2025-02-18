@@ -9,11 +9,8 @@ namespace GreenShop
             new Cart(Constants.UserId)
         };
 
-        public static Cart TryGetByUserID(int userId) => _carts.FirstOrDefault(c => c.UserId == userId)!;
-
+        //public static Cart TryGetByUserID(int userId) => _carts.FirstOrDefault(c => c.UserId == userId)!;
+        public ICart TryGetByUserID(int userId) => _carts.FirstOrDefault(c => c.UserId == userId)!;
         public void Add(Cart cart) => _carts.Add(cart);
-
-
-        public InMemoryCartRepository() { }
     }
 }

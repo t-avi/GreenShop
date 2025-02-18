@@ -5,9 +5,18 @@ namespace GreenShop.Controllers
 {
     public class OrderController : Controller
     {
-        //need to add IOrder, Order and IOrderRepository, OrderRepository in future
-        private readonly ICart cart = InMemoryCartRepository.TryGetByUserID(Constants.UserId);
+        private readonly IProductRepository productList;
+        private readonly ICartRepository cartList;
+        private readonly IOrderRepository orders;
+        private readonly ICart cart;
 
+        public OrderController(IProductRepository productList, ICartRepository cartList, IOrderRepository orders)
+        {
+            this.productList = productList;
+            this.cartList = cartList;
+            this.orders = orders;
+            this.cart = cartList.TryGetByUserID(Constants.UserId);
+        }
         public IActionResult Index()
         {
             return View(cart);
@@ -16,10 +25,10 @@ namespace GreenShop.Controllers
         {
             return View("Done");
         }
-        public IActionResult Make() {
-
-            //here we write down data
-            cart.Clear();
+        public IActionResult Make() 
+        {
+            var id = orders.Add(cart);
+            cart.Clear(); //deleted from order list, debug this
             return RedirectToAction("Done");
         }
     }

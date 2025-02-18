@@ -13,7 +13,6 @@ namespace GreenShop.Controllers
             this.productRepository = productRepository; 
         }
    
-
         public IActionResult Index(Guid id)
         { 
             return View(productRepository.TryGetByID(id)); 
