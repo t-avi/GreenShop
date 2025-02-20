@@ -10,6 +10,8 @@ builder.Services.AddTransient<IProduct, Product>(_ => new Product("name", 0, "de
 builder.Services.AddTransient<ICartPosition, CartPosition>();
 builder.Services.AddTransient<ICart, Cart>(_ => new Cart(Constants.UserId));
 
+builder.Services.AddSingleton<ICompare, Compare>();
+
 builder.Services.AddSingleton<IProductRepository, InMemoryProductRepository>();
 builder.Services.AddSingleton<ICartRepository, InMemoryCartRepository>();
 builder.Services.AddSingleton<IOrderRepository, InMemoryOrderRepository>();

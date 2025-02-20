@@ -9,12 +9,11 @@
 {
     <div class="col-4 card shadow">
         <div class="card-body">
-
-                <img class="card-img-top" src="~/images/@product.Src" />
-                <a style="color:#393D4A" href="/product/index/@product.ID"><h5>@product.Name</h5></a>
+            <img class="card-img-top" src="~/images/@product.Src" />
+            <a style="color:#393D4A" href="/product/index/@product.ID"><h5>@product.Name</h5></a>
             <h5 style="color:#393D4A">@product.Cost $</h5>
-                <a class="btn btn-dark" role="button" href="/cart/add?productId=@product.ID">Add to cart</a>
-             
+            <a class="btn btn-dark" role="button" href="/cart/add?productId=@product.ID">Add to cart</a>
+            <a class="btn btn-dark" role="button" href="/compare/add?productId=@product.ID">Add to compare</a>             
         </div>
     </div>
 }

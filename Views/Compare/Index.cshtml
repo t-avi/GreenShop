@@ -1,0 +1,32 @@
+﻿@model ICompare
+
+<div class="row">
+    
+    @if (Model.GetComparedProducts().Count() > 0)
+    { 
+        <div class="col-8 card shadow">
+            <div class="card-body">
+                @foreach (var position in Model.GetComparedProducts())
+                {
+                    <div class="container">
+                        <div class="row row-cols-12">
+                            <div class="col-5">
+                                <a style="color:#393D4A" href="/product/index/@position.ID"><h5>@position.Name</h5></a>
+                                <img class="card-img-top" src="~/images/@position.Src" sizes=10vw />
+                                <a class="btn btn-dark" role="button" href="/compare/remove?productId=@position.ID">Remove</a>
+                            </div>                        
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    }
+    else
+    {
+        <div class="col-12 card shadow">
+            <div class="card-body">
+                <h5 style="color:#393D4A">Nothing was compared yet!</h5>
+            </div>
+        </div>
+    }
+</div>
