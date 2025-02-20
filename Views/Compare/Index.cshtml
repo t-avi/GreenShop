@@ -4,22 +4,26 @@
     
     @if (Model.GetComparedProducts().Count() > 0)
     { 
-        <div class="col-8 card shadow">
-            <div class="card-body">
-                @foreach (var position in Model.GetComparedProducts())
-                {
+        
+        @foreach (var position in Model.GetComparedProducts())
+        {
+            <div class="col-2 card shadow">
+                <div class="card-body">
                     <div class="container">
                         <div class="row row-cols-12">
-                            <div class="col-5">
+                            <div class="col-12">
                                 <a style="color:#393D4A" href="/product/index/@position.ID"><h5>@position.Name</h5></a>
                                 <img class="card-img-top" src="~/images/@position.Src" sizes=10vw />
+                                <a style="color:#393D4A" ><h5>@position.Cost $</h5></a>
+                                <a style="color:#393D4A"><h5>@position.Description</h5></a>
                                 <a class="btn btn-dark" role="button" href="/compare/remove?productId=@position.ID">Remove</a>
                             </div>                        
                         </div>
                     </div>
-                }
+                </div>
             </div>
-        </div>
+        }
+            
     }
     else
     {
