@@ -1,0 +1,37 @@
+﻿@model Cart
+
+<div class="row">
+ 
+    @if (Model.TryGetAll().Count != 0)
+    { 
+
+        <div class="col-4 card shadow">
+            <div class="card-body">
+                @foreach (var position in Model.TryGetAll())
+                {
+                    <a style="color:#393D4A" href="/product/index/@position.Product.ID"><h5>@position.Product.Name</h5></a>
+                    <h5 style="color:#393D4A">Count: @position.Count</h5>
+                    <h5 style="color:#393D4A">Price: @position.PositionPrice</h5>
+                    <a class="btn btn-dark" role="button" href="/cart/remove?productId=@position.Product.ID">Remove from cart</a>
+                }
+            </div>
+        </div>
+    
+    <div class="col-4 card shadow">
+        <div class="card-body">
+                <h5 style="color:#393D4A">Sum: @Model.FullCartPrice</h5>
+        </div>
+    </div>
+
+    }
+    else {
+    <div class="col-4 card shadow">
+        <div class="card-body">
+            <h5 style="color:#393D4A">Cart is empty!</h5>
+        </div>
+    </div>
+    }
+
+</div>
+
+<div class="text-center"></div>
