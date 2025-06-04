@@ -10,8 +10,9 @@ namespace GreenShop
         };
          
         public void Clear(int userId) {
-            var i = _carts.IndexOf(_carts.FirstOrDefault(c => c.UserId == userId)!);
-            _carts[i].Clear();
+            _carts = _carts.Where(c => c.UserId != userId).ToList();
+            //var i = _carts.IndexOf(_carts.FirstOrDefault(c => c.UserId == userId)!);
+            //_carts[i].Clear();
         }        
         public ICart TryGetByUserID(int userId) => _carts.FirstOrDefault(c => c.UserId == userId)!;
         public void Add(Cart cart) => _carts.Add(cart);

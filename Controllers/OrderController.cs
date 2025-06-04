@@ -42,7 +42,7 @@ namespace GreenShop.Controllers
         {
             var actualCart = cartList.TryGetByUserID(Constants.UserId);
             orders.Add(actualCart);
-            cartList.Clear(Constants.UserId); //tf this one kills both cart and orders i hate keep objs in memory bruh. i think i neet to keep in on DB or smth
+            cartList.Clear(Constants.UserId); 
             return $"Done. Your order total price is: {actualCart.FullCartPrice}";
         }
     }
