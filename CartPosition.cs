@@ -10,18 +10,13 @@ namespace GreenShop
         public int Count { get; set; }
         public decimal PositionPrice { get => Count * Product.Cost; }
 
-        /*public CartPosition(Product p, int c)
-        {
-            Id = Guid.NewGuid();
-            Product = p;
-            Count = c;
-        }*/
         public CartPosition(IProduct p)
         {
             Id = Guid.NewGuid();
             Product = p;
             Count = 1;
         }
+
     }
 
 }

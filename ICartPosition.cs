@@ -7,5 +7,6 @@ namespace GreenShop
         int Count { get; set; }
         decimal PositionPrice { get; }
         IProduct Product { get; set; }
+
     }
 }

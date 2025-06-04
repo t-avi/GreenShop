@@ -7,14 +7,22 @@ namespace GreenShop.Controllers
     {
         private readonly IProductRepository productList;
         private readonly ICompare comparedProducts;
+        private readonly ICartRepository cartList;
 
-        public CompareController(IProductRepository productList, ICompare comparedProducts)
+        public CompareController(IProductRepository productList, ICompare comparedProducts, ICartRepository cartList)
         {
             this.productList = productList;
             this.comparedProducts = comparedProducts;
+            this.cartList = cartList;
         }
         public IActionResult Index()
         {
+            var cart = cartList.TryGetByUserID(Constants.UserId);
+            ViewBag.ProductCount = cart?.Amount == 0 ? "" : cart?.Amount.ToString();
+
+            var amount = comparedProducts.GetComparedProducts().Count;
+            ViewBag.ComparedCount = amount == 0 ? "" : amount.ToString();
+
             return View(comparedProducts);
         }
         public IActionResult Add(Guid productId)

@@ -1,0 +1,20 @@
+﻿<div class="col-4 card shadow">
+    <div class="card-body">
+        <form method="post">
+            <label>Email Adress</label>
+            <div>
+                <input type="text" name="email" />
+            </div>
+
+            <label>Password</label>
+            <div>
+                <input type="text" name="name" />
+            </div>
+
+            <br />
+            <button class="btn btn-dark" type="submit" asp-controller="Authentication" asp-action="MakeALogin">Register</button>
+            <br />
+            <a role="button" href="/authentication/register">Already has no account? Register!</a>
+        </form>
+    </div>
+</div>

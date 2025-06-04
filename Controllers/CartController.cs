@@ -9,20 +9,29 @@ namespace GreenShop.Controllers
         private readonly ICartRepository cartList;
         private readonly ICart cart;
 
-        public CartController(IProductRepository productList, ICartRepository cartList, IOrderRepository orders)
+        private readonly ICompare comparedProducts;
+
+        public CartController(IProductRepository productList, ICartRepository cartList, IOrderRepository orders, ICompare comparedProducts)
         {
             this.productList = productList;
             this.cartList = cartList;
-            this.cart = cartList.TryGetByUserID(Constants.UserId); //personal cart ID should be added
+            this.cart = cartList.TryGetByUserID(Constants.UserId);
+
+            this.comparedProducts = comparedProducts;
         }
-        public IActionResult Index() 
+        public IActionResult Index()
         {
+            var cart = cartList.TryGetByUserID(Constants.UserId);
+            ViewBag.ProductCount = cart?.Amount == 0 ? "" : cart?.Amount.ToString();
+
+            var amount = comparedProducts.GetComparedProducts().Count;
+            ViewBag.ComparedCount = amount == 0 ? "" : amount.ToString();
             return View(cart);
         }
         public IActionResult Add(Guid productId) 
         {
             cart.AddProduct(new CartPosition(productList.TryGetByID(productId)));
-            return RedirectToAction("Index"); //should redirect to home or cart, now only to cart
+            return RedirectToAction("Index", "Home");
         }
         public IActionResult Remove(Guid productId)
         {

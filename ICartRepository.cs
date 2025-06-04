@@ -6,5 +6,6 @@ namespace GreenShop
     {
         void Add(Cart cart);
         ICart TryGetByUserID(int userId);
+        void Clear(int userId);
     }
 }

@@ -1,0 +1,36 @@
+﻿<div class="col-4 card shadow">
+    <div class="card-body">
+        <form method="post">
+            <label>Email Adress</label>
+            <div>
+                <input type="text" name="email" />
+            </div>
+
+            <label>Name</label>
+            <div>
+                <input type="text" name="name" />
+            </div>
+
+            <label>Phone number</label>
+            <div>
+                <input type="text" name="phone" />
+            </div>
+
+            <label>Address</label>
+            <div>
+                <input type="text" name="address" />
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="flexCheckIndeterminate">
+                <label class="form-check-label" for="flexCheckIndeterminate">
+                    Remember me
+                </label>
+            </div>
+
+            <br />
+            <button class="btn btn-dark" type="submit" asp-controller="Authentication" asp-action="MakeAnAccount">Register</button>
+            <br />
+            <a role="button" href="/authentication/login">Already has an account?</a>
+        </form>
+    </div>
+</div>

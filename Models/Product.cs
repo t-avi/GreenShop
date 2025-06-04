@@ -17,6 +17,7 @@
             ID = Guid.NewGuid();
             Src = src;
         }
+
         public override string ToString() => $"Id: {ID}\nName: {Name}\nDescription: {Description}\nCost: {Cost}$";
 
     }
