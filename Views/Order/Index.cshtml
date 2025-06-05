@@ -1,6 +1,8 @@
 ﻿@model ICart
 
 <div class="row">
+    @if (Model.TryGetAll().Count != 0)
+    { 
     <div class="col-8 card shadow">
         <div class="card-body">
             @foreach (var position in Model.TryGetAll())
@@ -50,6 +52,15 @@
                 <button class="btn btn-dark" type="submit" asp-controller="Order" asp-action="Make">Pay</button>
             </form>
         </div>
+        </div>
+    }
+    else
+    {
+    <div class="col-12 card shadow">
+        <div class="card-body">
+            <h5 style="color:#393D4A">No orders yet!</h5>
+        </div>
     </div>
-   
+    }
+
 </div>

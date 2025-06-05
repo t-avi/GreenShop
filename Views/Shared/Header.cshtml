@@ -21,10 +21,10 @@
                         <a class="nav-link text-dark" asp-area="" asp-controller="Order" asp-action="Index">Order</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link text-dark" asp-area="" asp-controller="Compare" asp-action="Index">Compared @ViewBag.ComparedCount</a>
+                        <a class="nav-link text-dark" asp-area="" asp-controller="Compare" asp-action="Index">Compared @await Component.InvokeAsync("Compare")</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link text-dark" asp-area="" asp-controller="Cart" asp-action="Index">Cart @ViewBag.ProductCount</a>
+                        <a class="nav-link text-dark" asp-area="" asp-controller="Cart" asp-action="Index">Cart @await Component.InvokeAsync("Cart")</a>
                     </li>
                     
                 </ul>

@@ -23,12 +23,6 @@ namespace GreenShop.Controllers
         }
         public IActionResult Index()
         {
-            var cart = cartList.TryGetByUserID(Constants.UserId);
-            ViewBag.ProductCount = cart?.Amount == 0 ? "" : cart?.Amount.ToString();
-
-            var amount = comparedProducts.GetComparedProducts().Count;
-            ViewBag.ComparedCount = amount == 0 ? "" : amount.ToString();
-
             return View(favourites);
         }
         public IActionResult Add(Guid productId)

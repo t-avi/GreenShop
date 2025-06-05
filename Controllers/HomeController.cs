@@ -22,11 +22,11 @@ namespace GreenShop.Controllers
 
         public IActionResult Index(int id)
         {
-            var cart = cartList.TryGetByUserID(Constants.UserId);
-            ViewBag.ProductCount = cart?.Amount == 0 ? "" : cart?.Amount.ToString();
+            //var cart = cartList.TryGetByUserID(Constants.UserId) == null ? new Cart(Constants.UserId) : cartList.TryGetByUserID(Constants.UserId);
+            //ViewBag.ProductCount = cart?.Amount == 0 ? "" : cart?.Amount.ToString();
 
-            var amount = comparedProducts.GetComparedProducts().Count;
-            ViewBag.ComparedCount = amount == 0 ? "" : amount.ToString();
+            //var amount = comparedProducts.GetComparedProducts().Count;
+            //ViewBag.ComparedCount = amount == 0 ? "" : amount.ToString();
 
             return View(productList.GetAll());            
         }
