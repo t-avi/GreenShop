@@ -11,26 +11,29 @@
             <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
                 <ul class="navbar-nav flex-grow-1">
                     <li class="nav-item">
-                        <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                        <a class="nav-link text-dark" asp-area="" asp-controller="home" asp-action="index">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link text-dark" asp-area="" asp-controller="Favourites" asp-action="Index">Favs</a>
+                        <a class="nav-link text-dark" asp-area="" asp-controller="favourites" asp-action="index">Favs</a>
                     </li>
                     
                     <li class="nav-item">
-                        <a class="nav-link text-dark" asp-area="" asp-controller="Order" asp-action="Index">Order</a>
+                        <a class="nav-link text-dark" asp-area="" asp-controller="order" asp-action="index">Order</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link text-dark" asp-area="" asp-controller="Compare" asp-action="Index">Compared @await Component.InvokeAsync("Compare")</a>
+                        <a class="nav-link text-dark" asp-area="" asp-controller="compare" asp-action="index">Compared @await Component.InvokeAsync("Compare")</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link text-dark" asp-area="" asp-controller="Cart" asp-action="Index">Cart @await Component.InvokeAsync("Cart")</a>
+                        <a class="nav-link text-dark" asp-area="" asp-controller="cart" asp-action="index">Cart @await Component.InvokeAsync("Cart")</a>
                     </li>
                     
                 </ul>
                 <ul class="navbar-nav flex-grow-2">
                     <li class="nav-item">
-                        <a class="nav-link text-dark" asp-area="" asp-controller="Authentication" asp-action="Login">LogIn</a>
+                        <a class="nav-link text-dark" asp-area="" asp-controller="authentication" asp-action="login">LogIn</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-dark" asp-area="" asp-controller="admin" asp-action="index">Admin</a>
                     </li>
                 </ul>
             </div>

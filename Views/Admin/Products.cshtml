@@ -1,0 +1,23 @@
+﻿@model IProductRepository 
+
+
+<div class="row">
+    <div class="col-4 card shadow">
+        @foreach (var product in Model.GetAll())
+        {        
+            <div class="card-body">                
+                <a style="color:#393D4A"><h5>@product.Name</h5></a>
+                <h5 style="color:#393D4A">@product.Cost $</h5>
+                <h5 style="color:#393D4A">@product.Description</h5>
+                <a class="btn btn-dark" role="button" href="/product/index/@product.ID">Edit</a>
+                <a class="btn btn-dark" role="button" href="">Delete</a>
+            </div>        
+        }
+    </div>
+    <br/>
+    <div class="col-8">
+        <a class="btn btn-dark" role="button" href="">Add new product</a>
+    </div>
+</div>
+
+<div class="text-center"></div>

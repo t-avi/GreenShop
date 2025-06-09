@@ -28,7 +28,7 @@ namespace GreenShop.Controllers
             //var amount = comparedProducts.GetComparedProducts().Count;
             //ViewBag.ComparedCount = amount == 0 ? "" : amount.ToString();
 
-            return View(productList.GetAll());            
+            return View(productList);            
         }
 
 

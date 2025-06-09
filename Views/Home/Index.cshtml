@@ -1,11 +1,11 @@
 ﻿@{
     ViewData["Title"] = "Green Shop!";
 }
-@model List<IProduct> //why list here
+@model IProductRepository
 
 
 <div class="row">
-@foreach (var product in Model)
+@foreach (var product in Model.GetAll())
 {
     <div class="col-4 card shadow">
         <div class="card-body">
