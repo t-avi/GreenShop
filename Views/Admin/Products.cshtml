@@ -9,7 +9,8 @@
                     <th scope="col">Name</th>
                     <th scope="col">Cost</th>
                     <th scope="col">Desc</th>
-                    <th scope="col">Editing</th>
+                    <th scope="col"></th>
+                    <th scope="col"></th>
                 </tr>
             </thead>
             <tbody>
@@ -21,8 +22,10 @@
             <td>@product.Cost $</td>
             <td>@product.Description</td>
             <td>
-                <a class="btn btn-dark" role="button" href="/admin/editproduct/@product.ID">Edit</a>
-                <a class="btn btn-dark" role="button" href="/admin/removeproduct/@product.ID">Delete</a>
+                <a role="button" href="/admin/editproduct/@product.ID">Edit</a>
+            </td>
+            <td>
+                <a role="button" href="/admin/removeproduct/@product.ID">Delete</a>
             </td>
         </tr>              
     }
