@@ -8,5 +8,7 @@
         public Guid ID { get; set; }
         string Name { get; set; }
         string Src { get; set; }
+
+        void Edit(string name, string description, decimal cost);
     }
 }

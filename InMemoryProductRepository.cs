@@ -11,12 +11,13 @@ namespace GreenShop
             new Product("Alocasia", 50, "It's plant too", "4.PNG")
         };
 
-        public void AddListFromJson() { }
-        public void LoadNewListFromJson() { }
-        public void SaveListToJson() { }
+        //public void AddListFromJson() { }
+        //public void LoadNewListFromJson() { }
+        //public void SaveListToJson() { }
 
-        public void AddProduct(IProduct p) => products.Add(p); 
+        public void AddProduct(IProduct p) => products.Add(p);
 
+        public void RemoveProductByID(Guid id) => products.Remove(products.FirstOrDefault(c => c.ID == id)!);
         public IProduct TryGetByID(Guid id) => products.FirstOrDefault(product => product.ID == id)!; //apply try catch to incorrect id, ! means non-nullable (check for errors)
 
         public int GetCount() => products.Count; 

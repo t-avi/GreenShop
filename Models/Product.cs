@@ -18,6 +18,13 @@
             Src = src;
         }
 
+        public void Edit(string name, string description, decimal cost)
+        {
+            this.Name = name;
+            this.Description = description; 
+            this.Cost = cost;  
+        }
+
         public override string ToString() => $"Id: {ID}\nName: {Name}\nDescription: {Description}\nCost: {Cost}$";
 
     }
