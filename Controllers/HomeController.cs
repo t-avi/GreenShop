@@ -31,6 +31,24 @@ namespace GreenShop.Controllers
             return View(productList);            
         }
 
+        [HttpPost]
+        public IActionResult Search(string name)
+        {
+            List<IProduct> result = new List<IProduct>();
+
+            //InMemoryProductRepository result = new InMemoryProductRepository(); 
+            //result.GetAll().Clear(); //why result is a copy of productList......
+
+            foreach (var product in productList.GetAll().ToList()) 
+            {
+                if (product.Name.ToLower() == name.ToLower())
+                {
+                    result.Add(product);
+                }
+            }
+
+            return View("SearchResult", result);
+        }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()

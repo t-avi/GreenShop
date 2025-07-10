@@ -3,15 +3,18 @@
 <div class="row">
     @if (Model.TryGetAll().Count != 0)
     { 
-    <div class="col-8 card shadow">
+    <div class="col-8 card shadow text-center">
         <div class="card-body">
             @foreach (var position in Model.TryGetAll())
             {        
                 <div class="container">
                     <div class="row row-cols-12">
                         <div class="col-5">
-                            <a style="color:#393D4A" href="/product/index/@position.Product.ID"><h5>@position.Product.Name</h5></a>
-                            <img class="card-img-top" src="~/images/@position.Product.Src" sizes=10vw />
+                            <a style="color:#393D4A" href="/product/index/@position.Product.ID"><h5>@position.Product.Name</h5></a>                            
+                            <img src="~/images/@position.Product.Src"
+                                class="img-fluid"
+                                style="width: 320px; height: 320px" />
+
                         </div>
                         <div class="col-5">
                             <h5> ⠀</h5>

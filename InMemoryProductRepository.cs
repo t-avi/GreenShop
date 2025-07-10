@@ -6,7 +6,7 @@ namespace GreenShop
     {
         private static List<IProduct> products = new List<IProduct>() {
             new Product("Monstera", 20, "Some plant", "1.PNG"),
-            new Product("Senecio", 35, "Another plant", "2.PNG"),
+            new Product("Senecio", 35, "Another plant", "5.PNG"),
             new Product("Anthurium", 60, "It's plant too", "3.PNG"),
             new Product("Alocasia", 50, "It's plant too", "4.PNG")
         };

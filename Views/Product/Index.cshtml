@@ -3,8 +3,10 @@
 <div class="row">
         <div class="col-4 card shadow">
             <div class="card-body">
-
-            <img class="card-img-top" src="~/images/@Model.Src" />
+           
+            <img src="~/images/@Model.Src"
+                 class="img-fluid"
+                 style="width: 320px; height: 320px" />
             <a style="color:#393D4A"><h5>@Model.Name</h5></a>
             <h5 style="color:#393D4A">@Model.Cost $</h5>
             <a class="btn btn-dark" href="/cart/add?productId=@Model.ID" role="button">Add to cart</a>

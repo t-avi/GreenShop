@@ -4,12 +4,27 @@
 @model IProductRepository
 
 
+<form method="post">
+
+    <div class="input-group">
+        <div class="col-11 form-outline" data-mdb-input-init>
+        <input type="search" name="name" class="form-control" />
+    </div> 
+    
+    <button class="btn btn-dark" type="ssubmit" data-mdb-ripple-init asp-controller="home" asp-action="search">Search</button>
+</div>
+</form>
+
+<br />
+
 <div class="row">
 @foreach (var product in Model.GetAll())
 {
-    <div class="col-4 card shadow">
+        <div class="col-4 card shadow text-center">
         <div class="card-body">
-            <img class="card-img-top" src="~/images/@product.Src" />
+                <img src="~/images/@product.Src"
+                     class="img-fluid"
+                     style="width: 320px; height: 320px" />
             <a style="color:#393D4A" href="/product/index/@product.ID"><h5>@product.Name</h5></a>
             <h5 style="color:#393D4A">@product.Cost $</h5>
             <a class="btn btn-dark" role="button" href="/cart/add?productId=@product.ID">Add to cart</a>
